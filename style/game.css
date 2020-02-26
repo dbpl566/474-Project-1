@@ -36,6 +36,7 @@
 #platform1{
     position: absolute;
     background-image: url("/assets/bricks.png");
+    background-size: cover;
     /* background-size:20px; */
     height:25px;
     width:150px;
