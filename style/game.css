@@ -6,7 +6,7 @@
 
 #gameBoard{
     width: 700px;    
-    height: 680px;
+    height: 800px;
     border-style:solid;
     border-width:1px;
     border-color:black;
@@ -24,10 +24,10 @@
     border-color:black;
 }
 #playBoard{
-    background: slategray;
+    background-image: url("/assets/background.jpg");
     margin:10px 10px;
     width:680px;
-    height:550px;
+    height:680px;
     position:relative;
     border-style:solid;
     border-width:1px;
@@ -35,8 +35,8 @@
 }
 #platform1{
     position: absolute;
-    background:red;
-    background-size:20px;
+    background-image: url("/assets/bricks.png");
+    /* background-size:20px; */
     height:25px;
     width:150px;
     top:400px;

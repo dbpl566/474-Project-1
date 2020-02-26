@@ -16,7 +16,7 @@ var game = function () {
     this.update = function (time) {
         self.platform.updatePosition(time);
         if (self.platform.yPos < 30) {
-            self.platform.positionPlatform(self.platform.xPos, self.options.height - 50)
+            self.platform.positionPlatform(self.randomxPos, self.options.height - 50)
         }
 
         return 0;
@@ -44,11 +44,16 @@ var platform = function () {
     this.setSpeed = function (speed) {
         self.speed = speed;
     };
+    this.randomxPos = function(){
+        var randomx = Math.random(0,650);
+        self.xPos = randomx;
+    }
     this.updatePosition = function (time) {
         //speed*time gives distance.
         var distance = self.speed * time;
         //calculate new x,y from distance and angle y is sin*dist, x is cos*dist
         self.yPos = self.yPos - distance;
+        self.randomxPos();
     }
     this.initialize();
 }
