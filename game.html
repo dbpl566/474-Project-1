@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Futball</title>
+    <link rel="stylesheet" href="style/game.css" type="text/css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type='text/javascript' src="scripts/game.js"></script>
+    <script type='text/javascript' src="scripts/gameUI.js"></script>
+</head>
+
+<body>
+    <div id="mainContent">
+        <div id="gameBoard">
+            <div id="scoreBoard">
+                <div id="GameStopped"><button id="StartBtn" class="btnStyle">Start Game</button>
+                </div>
+                <div id="GameRunning"><button id="StopBtn" class="btnStyle">Stop Game</button>
+                </div>
+            </div>
+            <div id="playBoard">
+                <div id="platform1"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                var fb = new gameUI();
+            });
+        </script>
+</body>
+
+</html>
