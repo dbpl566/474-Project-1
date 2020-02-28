@@ -12,6 +12,14 @@
     border-color:black;
     margin:0;
     padding:0;
+    
+}
+#box{
+    width:680px;
+    height:680px;
+    position: relative;
+    overflow-y: hidden;    
+    
 }
 #scoreBoard{
     background: silver;
@@ -25,19 +33,35 @@
 }
 #playBoard{
     background-image: url("/assets/background.jpg");
+    
+    background-repeat: repeat-y;
     margin:10px 10px;
     width:680px;
-    height:680px;
-    position:relative;
-    border-style:solid;
-    border-width:1px;
-    border-color:black;
+    height:1680px;
+    position:absolute;
+
+}
+.sliding-background{
+    background-image: url("/assets/background.jpg");
+    margin:0px 20px;
+    background-repeat: repeat-y;
+    width:680px;
+    height:1680px;
+    animation: slide 5s linear infinite;
+}
+@keyframes slide{
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(0,-1692px,0);
+    }
 }
 #platform1{
     position: absolute;
     background-image: url("/assets/bricks.png");
     background-size: cover;
-    /* background-size:20px; */
+    /*background-size:20px;*/
     height:25px;
     width:150px;
     top:400px;

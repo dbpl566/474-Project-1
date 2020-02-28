@@ -7,9 +7,11 @@ var game = function () {
     this.height = 550;
 
     this.platform = new platform();
+    // this.platform = this.add.physics
     this.initialize = function () {
         self.reset();
     };
+
     this.reset = function () {
 
     };
