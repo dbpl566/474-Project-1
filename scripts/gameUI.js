@@ -13,7 +13,6 @@ var gameUI = function () {
             self.running = true;
             self.updateUI();
         });
-        
         $('#StopBtn').on('click', function () {
             $('#GameStopped').show();
             $('#GameRunning').hide();
@@ -22,25 +21,9 @@ var gameUI = function () {
             self.refreshView();
         });
 
-        $('body').keydown(function(e) { 
-            if (e.which == 37) { //left
-                self.game.player.incrementX(-10);
-            } else if(e.which == 38) { //up
-                self.game.player.incrementY(-10); 
-            } else if (e.which == 39) { //right 
-                self.game.player.incrementX(10);
-            } else if (e.which == 40) { //down
-                self.game.player.incrementY(10);
-            }
-        });
-
         this.refreshView = function () {
-            $('#platform1').css("top", self.game.platform.yPos+'px');
-            $('#player').css("left", self.game.player.xPos+'px');
-            $('#player').css("top", self.game.player.yPos+'px');
-            //$("#player").finish().animate({ left: self.game.player.xPos+'px'},"slow" ); 
+            $('#platform1').css("top", self.game.platform.yPos);
         };
-        
         this.updateUI = function () {
             if (self.running == false) {
                 return;
@@ -55,8 +38,6 @@ var gameUI = function () {
 
         }
         this.updateUI();
-        
-
     }
     this.initialize();
 }
