@@ -4,16 +4,7 @@
     display: flex;
 }
 
-#gameBoard{
-    width: 700px;    
-    height: 800px;
-    border-style:solid;
-    border-width:1px;
-    border-color:black;
-    margin:0;
-    padding:0;
-    
-}
+
 #box{
     width:680px;
     height:680px;
@@ -68,6 +59,18 @@
     width:150px;
     top:400px;
     left:20px;
+}
+#gameBoard{
+    background-image:url("/assets/back.png");
+    background-size: 100% 100%;
+    width: 700px;    
+    height: 800px;
+    border-style:solid;
+    border-width:1px;
+    border-color:black;
+    margin:0;
+    padding:0;
+    
 }
 .btnStyle {
 	border-radius: 4px;
