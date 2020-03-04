@@ -5,7 +5,7 @@ var game = function () {
         width: 680,
     }
     this.height = 550;
-
+    this.player = new player();
     this.platform = new platform();
     this.initialize = function () {
         self.reset();
@@ -51,4 +51,34 @@ var platform = function () {
         self.yPos = self.yPos - distance;
     }
     this.initialize();
+}
+
+var player = function(){
+    var self = this;
+    this.speed = 0;
+    this.xPos = 0;
+    this.yPos = 0;
+
+    this.initialize = function () {
+        self.speed = 10;
+        self.xPos = 20;
+        self.yPos = 20;
+    };
+
+    this.setPos=function(x,y){
+        self.xPos = x;
+        self.yPos = y;
+    };
+    
+    this.incrementX = function(incr){
+        self.xPos += incr;
+    };
+
+    this.incrementY = function(incr){
+        self.yPos += incr;
+    };
+
+    this.initialize();
+
+
 }

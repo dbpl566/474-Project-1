@@ -33,6 +33,12 @@
     border-width:1px;
     border-color:black;
 }
+#player{
+    position: center;
+    background:green;
+    height: 25px;
+    width:25px;
+}
 #platform1{
     position: absolute;
     background:red;
