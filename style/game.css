@@ -23,24 +23,31 @@
     border-width:1px;
     border-color:black;
 }
-#playBoard{
-    background: slategray;
+.board{
+    background: url('/images/background1.jpg');
+    background-repeat: repeat-y;
+    width:680px;
+    height:1884px;
+    position: absolute;
+    z-index: -99;
+}
+#playBoardContainer{
     margin:10px 10px;
     width:680px;
     height:550px;
-    position:relative;
+    position: relative;;
     border-style:solid;
     border-width:1px;
     border-color:black;
+    overflow-y: hidden;
 }
-#platform1{
+.platform{
     position: absolute;
     background:red;
     background-size:20px;
     height:25px;
     width:150px;
-    top:400px;
-    left:20px;
+    z-index: 0;
 }
 .btnStyle {
 	border-radius: 4px;
