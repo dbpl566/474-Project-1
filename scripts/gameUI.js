@@ -9,7 +9,7 @@ var gameUI = function () {
     this.platforms = [];
     this.platformId = 0;
     this.player = undefined;
-    this.height = 1884;
+    this.height = gameHeight;
     this.top = {
         pos: 0,
         name: '',
@@ -21,7 +21,7 @@ var gameUI = function () {
         self.player = new player();
         self.top.name = '#playBoard1';
         $('#startScreen').show();
-        $('#endScreen').hide();
+        $('#endScreen').hide()
 
         $('#startBtn').on('click', function () {
             $('#startBtn').hide();
@@ -30,13 +30,15 @@ var gameUI = function () {
             self.startGame();
         });
 
-        /*some on endGame function
-         $('#endScreen').show();
-         self.running = false;
-        */
-       
+        //call to show endscreen and restart
+        this.endGame = function(){
+            $('#restartBtn').show();
+            $('#endScreen').show();
+            self.running = false;
+        }
+
         $('#restartBtn').on('click', function () {
-            self.game.reset();
+            //self.game.reset();
             self.running = true;
             clearInterval(self.timer);
             self.counter = 0;
@@ -81,7 +83,6 @@ var gameUI = function () {
         };
         // called every tick (50ms) from setInterval
         this.updateUI = function () {
-
             // counter gets incremented every tick from the setInterval (50ms right now)
             // after 100 ticks, add a new platform and remove any that are out of view
             if (self.counter % 100 == 0) {

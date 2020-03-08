@@ -20,8 +20,7 @@
     top: 0px;
     left: 0px;
     background: red;
-    display:none;
-    z-index: 98;
+    z-index: 99;
 }
 
 #gameBoard{
