@@ -1,3 +1,6 @@
+var gameHeight = 1884;
+var gameWidth = 680
+
 var gameUI = function () {
     var self = this;
     this.game = undefined;
@@ -17,20 +20,24 @@ var gameUI = function () {
     this.initialize = function () {
         self.player = new player();
         self.top.name = '#playBoard1';
-        $('#GameStopped').show();
-        $('#GameRunning').hide();
+        $('#startScreen').show();
+        $('#endScreen').hide();
 
-        $('#StartBtn').on('click', function () {
-            $('#GameStopped').hide();
-            $('#GameRunning').show();
+        $('#startBtn').on('click', function () {
+            $('#startBtn').hide();
+            $('#startScreen').slideUp();
             self.running = true;
             self.startGame();
         });
-        $('#StopBtn').on('click', function () {
-            $('#GameStopped').show();
-            $('#GameRunning').hide();
-            self.running = false;
-            //self.game.reset();
+
+        /*some on endGame function
+         $('#endScreen').show();
+         self.running = false;
+        */
+       
+        $('#restartBtn').on('click', function () {
+            self.game.reset();
+            self.running = true;
             clearInterval(self.timer);
             self.counter = 0;
         });
@@ -83,20 +90,20 @@ var gameUI = function () {
 
             // update the yPos (internally) of each platform
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
-            var playerYSpeed = 2;
+            this.player.ySpeed = 2;
             self.platforms.forEach(p => {
                 if ((self.player.yPos + 25) - p.yPos <= 1 && (self.player.yPos + 25) - p.yPos >= -1) {
                     let minX = p.xPos - 24;
                     let maxX = p.xPos + p.width;
                     if (self.player.xPos >= minX && self.player.xPos <= maxX) {
-                        playerYSpeed = -1;
+                        this.player.ySpeed = -1;
                     }
                 }
-                p.yPos -= 1;
+                p.updatePosition();
             })
 
             // update the y and x internally of the player
-            self.player.yPos += playerYSpeed;
+            self.player.yPos += self.player.ySpeed;
             self.player.xPos += self.player.xSpeed;
 
 
@@ -167,18 +174,19 @@ var platform = function (id, top) {
     this.initialize = function (id, top) {
         self.id = id;
         self.speed = 10;
-        // give the platforms a random x pos
-        self.xPos = (Math.floor(Math.random() * 530));
         // determine where to pos the 'top' css element of the platform
         self.top = 700 - top;
         // set the starting yPos
         self.yPos = 700;
         self.width = 150;
         self.height = 25;
+         // give the platforms a random x pos
+         self.xPos = (Math.floor(Math.random() * (gameWidth - self.width)));
     };
     this.positionPlatform = function (x, y) {
         self.xPos = x;
         self.yPos = y;
+        self.ySpeed = 2;
     };
     this.setSpeed = function (speed) {
         self.speed = speed;
@@ -195,6 +203,7 @@ var player = function () {
     this.xPos = 0;
     this.yPos = 0;
     this.xSpeed = 0;
+    this.ySpeed = 0;
 
     this.initialize = function () {
         self.xPos = 20;
