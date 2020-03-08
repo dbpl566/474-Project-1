@@ -1,84 +1,71 @@
-var game = function () {
-    var self = this;
-    this.options = {
-        height: 550,
-        width: 680,
-    }
-    this.height = 550;
-    this.player = new player();
-    this.platform = new platform();
-    this.initialize = function () {
-        self.reset();
-    };
-    this.reset = function () {
+// var game = function () {
+//     var self = this;
+//     this.options = {
+//         height: 1884,
+//         width: 680,
+//         pformCounter: 0,
+//     }
+//     this.height = 1884;
 
-    };
-    this.update = function (time) {
-        self.platform.updatePosition(time);
-        if (self.platform.yPos < 30) {
-            self.platform.positionPlatform(self.platform.xPos, self.options.height - 50)
-        }
+//     this.platforms = [];
+//     this.initialize = function () {
+//         self.reset();
+//     };
+//     this.reset = function () {
+//         //self.platforms = [];
+//     };
+//     this.update = function (time) {
 
-        return 0;
+//         platform.updatePosition(time);
 
-    };
-
-    this.initialize();
-
-}
-
-var platform = function () {
-    var self = this;
-    this.speed = 0;
-    this.xPos = 0;
-    this.yPos = 0;
-    this.initialize = function () {
-        self.speed = 10;
-        self.xPos = 0;
-        self.yPos = 500;
-    };
-    this.positionPlatform = function (x, y) {
-        self.xPos = x;
-        self.yPos = y;
-    };
-    this.setSpeed = function (speed) {
-        self.speed = speed;
-    };
-    this.updatePosition = function (time) {
-        //speed*time gives distance.
-        var distance = self.speed * time;
-        //calculate new x,y from distance and angle y is sin*dist, x is cos*dist
-        self.yPos = self.yPos - distance;
-    }
-    this.initialize();
-}
-
-var player = function(){
-    var self = this;
-    this.speed = 0;
-    this.xPos = 0;
-    this.yPos = 0;
-
-    this.initialize = function () {
-        self.speed = 10;
-        self.xPos = 20;
-        self.yPos = 20;
-    };
-
-    this.setPos=function(x,y){
-        self.xPos = x;
-        self.yPos = y;
-    };
-    
-    this.incrementX = function(incr){
-        self.xPos += incr;
-    };
-
-    this.incrementY = function(incr){
-        self.yPos += incr;
-    };
-
-    this.initialize();
+//         if (time % 2000) {
+//             var newArray = [];
+//             self.platforms.forEach(platform => {
+//                 if (platform.yPos > -50) {
+//                     newArray.push(platform);
+//                 }
+//                 else {
+//                     pformCounter += 1;
+//                     newArray.push(new platform(pformCounter));
+//                 }
+//             });
+//             self.platforms = newArray;
+//         }
 
 
-}
+//         return 0;
+
+//     };
+
+//     this.initialize();
+
+// };
+
+
+// var platform = function () {
+//     var self = this;
+//     this.speed = 0;
+//     this.xPos = 0;
+//     this.yPos = 0;
+//     this.id = 0;
+//     this.initialize = function (id) {
+//         self.id = id;
+//         self.speed = 10;
+//         self.xPos = (Math.floor(Math.random() * 300) + 30)
+//         self.yPos = 520;
+//     };
+//     this.positionPlatform = function (x, y) {
+//         self.xPos = x;
+//         self.yPos = y;
+//     };
+//     this.setSpeed = function (speed) {
+//         self.speed = speed;
+//     };
+//     this.updatePosition = function (time) {
+//         //speed*time gives distance.
+//         var distance = self.speed * time;
+
+//         self.yPos = self.yPos - distance;
+//     }
+//     this.initialize();
+// }
