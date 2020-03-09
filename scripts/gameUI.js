@@ -1,5 +1,5 @@
 var gameHeight = 1884;
-var gameWidth = 680
+var gameWidth = 680;
 
 var gameUI = function () {
     var self = this;
@@ -80,7 +80,10 @@ var gameUI = function () {
             //set the player div = to his current x and y
             $('#player').css("left", self.player.xPos + 'px');
             $('#player').css("top", self.player.yPos + 'px');
-        };
+
+        } /*end of refreshView*/
+
+
         // called every tick (50ms) from setInterval
         this.updateUI = function () {
             // counter gets incremented every tick from the setInterval (50ms right now)
@@ -91,13 +94,13 @@ var gameUI = function () {
 
             // update the yPos (internally) of each platform
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
-            this.player.ySpeed = 2;
+            self.player.ySpeed = 2;
             self.platforms.forEach(p => {
                 if ((self.player.yPos + 25) - p.yPos <= 1 && (self.player.yPos + 25) - p.yPos >= -1) {
                     let minX = p.xPos - 24;
                     let maxX = p.xPos + p.width;
                     if (self.player.xPos >= minX && self.player.xPos <= maxX) {
-                        this.player.ySpeed = -1;
+                        self.player.ySpeed = -1;
                     }
                 }
                 p.updatePosition();
@@ -112,7 +115,7 @@ var gameUI = function () {
 
             self.counter += 1;
 
-        }
+        }   /*end of updateUI*/
 
         this.startGame = function () {
             // creates a timer that calls updateUI every 50 ms
@@ -159,9 +162,10 @@ var gameUI = function () {
             curY -= 1;
             return curY;
         }
-    }
+    } /*end of initialize*/
     this.initialize();
-}
+
+} /*end of gameUI*/
 
 var platform = function (id, top) {
     var self = this;
@@ -196,7 +200,7 @@ var platform = function (id, top) {
         self.yPos -= 1;
     }
     this.initialize(id, top);
-}
+} /*end of platform*/
 
 var player = function () {
     var self = this;
@@ -215,6 +219,7 @@ var player = function () {
         self.xPos = x;
         self.yPos = y;
     };
+
 
     // if the player is currently not moving (isMoving): sets the xSpeed of the player as well as isMoving to true
     this.handleKeyDown = function (e) {
@@ -245,4 +250,4 @@ var player = function () {
     this.initialize();
 
 
-}
+} /*end of player*/
