@@ -4,54 +4,46 @@
     display: flex;
 }
 
+#startScreen{
+    width: 100vw; /*means 100% of view width */
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: black;
+    z-index: 99;
+}
+#endScreen{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: red;
+    z-index: 99;
+}
 
-#box{
-    width:680px;
-    height:680px;
-    position: relative;
-    overflow-y: hidden;    
-    
+#gameBoard{
+    width: 700px;    
+    height: 680px;
+    border-style:solid;
+    border-width:1px;
+    border-color:black;
+    margin:0;
+    padding:0;
 }
 #scoreBoard{
-    background-image: url("/assets/score.png");
-    background-size: 100% 100%;
-    background-size: fill;
-    /* background-repeat: no-repeat; */
+    background: silver;
     width: 680px;    
-    height: 100px;
-    margin:10px 10px 0px 10px;
-    position:relative;
-    /* border-style:solid;
-    border-width:1px;
-    border-color:black; */
-}
-/* #playBoard{
-    background-image: url("/assets/background.jpg");
-    background-repeat: repeat-y;
+    height: 80px;
     margin:10px 10px;
-    width:680px;
-    height:1680px;
-    position:absolute;
-
-} */
-/* .sliding-background{
-    background-image: url("/assets/background.jpg");
-    margin:0px 20px;
-    background-repeat: repeat-y;
-    width:680px;
-    height:1680px;
-    animation: slide 5s linear infinite;
-} */
-@keyframes slide{
-    0%{
-        transform: translate3d(0,0,0);
-    }
-    100%{
-        transform: translate3d(0,-1692px,0);
-    }
+    position:relative;
+    border-style:solid;
+    border-width:1px;
+    border-color:black;
 }
 .board{
-    background: url('/assets/background.jpg');
+    background: url('/images/background1.jpg');
     background-repeat: repeat-y;
     width:680px;
     height:1884px;
@@ -59,61 +51,55 @@
     z-index: -99;
 }
 #playBoardContainer{
-    margin:0px 10px 10px 10px;
+    margin:10px 10px;
     width:680px;
-    height:650px;
+    height:550px;
     position: relative;;
-    /* border-style:solid; */
-    /* border-width:1px;
-    border-color:black; */
+    border-style:solid;
+    border-width:1px;
+    border-color:black;
     overflow-y: hidden;
 }
 .platform{
     position: absolute;
-    background-image: url("/assets/bricks.png");
-    background-size: cover;
-    /*background-size:20px;*/
+    background:red;
+    background-size:20px;
     height:25px;
     width:150px;
     z-index: 0;
 }
-#gameBoard{
-    background-image:url("/assets/back.png");
-    background-size: 100% 100%;
-    width: 700px;    
-    height: 800px;
-    border-style:solid;
-    border-width:1px;
-    border-color:black;
-    margin:0;
-    padding:0;
-    
+#player{
+    position: absolute;
+    background:blue;
+    background-size:20px;
+    height:25px;
+    width: 25px;
+    top:10px;
+    left:10px;
 }
 .btnStyle {
-    background-image: url("/assets/button.png");
-    background-size: cover;
-    background-size: 100% 100%;
-    /* border-radius: 4px; */
-	/* border: thin solid rgb(32, 146, 240);
-	background-color: rgb(148, 158, 248); */
+	border-radius: 6px;
+	border: medium solid rgb(97, 67, 12);
+	background-color: rgb(255, 189, 128);
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
-	font-size:20px;
-	color: #663300;
-	padding: 5px 30px;
-	margin:8px 70px;
+	font-size:25px;
+	color: rgb(122, 85, 14);
+    padding: 5px 30px;
+    height: 100px; 
+    width: 200px;
+    margin: -50px 0px 0px -100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .btnStyle:active {
-	border: thin solid rgb(0, 156, 204);
-	background-color: rgb(210, 226, 255);
-	color: #669900;
+	opacity: 70%;
 	cursor: pointer;
 }
 
 .btnStyle:hover {
-	border: thin solid rgb(0, 153, 255);
-	background-color: rgb(220, 214, 252);
-	color: #996633;
+	opacity: 70%;
 	cursor: pointer;
 }
