@@ -7,3 +7,6 @@ score board pic:
 https://www.google.com/search?q=game+frame&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi4tr7XuvznAhXHlnIEHcHgBR8Q_AUoAnoECA0QBA&biw=1476&bih=842#imgrc=uqr9yyUmvkXdAM&imgdii=Wfj6rruolH-NgM
 
 background and button:https://www.vectorstock.com/royalty-free-vector/game-ui-kit-template-wooden-menu-of-vector-23899350
+score board: https://www.vectorstock.com/royalty-free-vector/wooden-sign-icon-old-rustic-board-for-decoration-vector-27999600
+
+beanstalk: https://www.vectorstock.com/royalty-free-vector/beanstalk-vector-1631661
