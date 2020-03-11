@@ -183,8 +183,8 @@ var platform = function (id, top) {
         self.top = 700 - top;
         // set the starting yPos
         self.yPos = 700;
-        self.width = 150;
-        self.height = 25;
+        self.width = 90;
+        self.height = 139;
          // give the platforms a random x pos
          self.xPos = (Math.floor(Math.random() * (gameWidth - self.width)));
     };
