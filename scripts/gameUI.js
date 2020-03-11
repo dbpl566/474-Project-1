@@ -1,3 +1,6 @@
+var gameHeight = 1884;
+var gameWidth = 680;
+
 var gameUI = function () {
     var self = this;
     this.game = undefined;
@@ -6,7 +9,8 @@ var gameUI = function () {
     this.platforms = [];
     this.platformId = 0;
     this.player = undefined;
-    this.height = 1884;
+    this.height = gameHeight;
+    this.globalMoveSpeed = -1;
     this.top = {
         pos: 0,
         name: '',
@@ -15,22 +19,27 @@ var gameUI = function () {
 
     // not using game.js anymore right now
     this.initialize = function () {
-        self.player = new player();
         self.top.name = '#playBoard1';
-        $('#GameStopped').show();
-        $('#GameRunning').hide();
+        $('#startScreen').show();
+        $('#endScreen').hide()
 
-        $('#StartBtn').on('click', function () {
-            $('#GameStopped').hide();
-            $('#GameRunning').show();
-            self.running = true;
-            self.startGame();
+        $('#startBtn').on('click', function () {
+            $('#startBtn').hide();
+            $('#startScreen').slideUp();
+            setTimeout(self.startGame, 3000);
+
         });
-        $('#StopBtn').on('click', function () {
-            $('#GameStopped').show();
-            $('#GameRunning').hide();
+
+        //call to show endscreen and restart
+        this.endGame = function () {
+            $('#restartBtn').show();
+            $('#endScreen').show();
             self.running = false;
+        }
+
+        $('#restartBtn').on('click', function () {
             //self.game.reset();
+            self.running = true;
             clearInterval(self.timer);
             self.counter = 0;
         });
@@ -71,10 +80,12 @@ var gameUI = function () {
             //set the player div = to his current x and y
             $('#player').css("left", self.player.xPos + 'px');
             $('#player').css("top", self.player.yPos + 'px');
-        };
+
+        } /*end of refreshView*/
+
+
         // called every tick (50ms) from setInterval
         this.updateUI = function () {
-
             // counter gets incremented every tick from the setInterval (50ms right now)
             // after 100 ticks, add a new platform and remove any that are out of view
             if (self.counter % 100 == 0) {
@@ -83,32 +94,38 @@ var gameUI = function () {
 
             // update the yPos (internally) of each platform
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
-            var playerYSpeed = 2;
+            self.player.ySpeed = 3;
             self.platforms.forEach(p => {
-                if ((self.player.yPos + 25) - p.yPos <= 1 && (self.player.yPos + 25) - p.yPos >= -1) {
+                if ((self.player.yPos + 25) - p.yPos <= 3 && (self.player.yPos + 25) - p.yPos >= -3) {
                     let minX = p.xPos - 24;
                     let maxX = p.xPos + p.width;
                     if (self.player.xPos >= minX && self.player.xPos <= maxX) {
-                        playerYSpeed = -1;
+                        self.player.ySpeed = self.globalMoveSpeed;
+                        self.player.yAccel = 0;
+                        self.player.yPos = p.yPos - 25;
                     }
                 }
-                p.yPos -= 1;
+                p.updatePosition();
             })
 
+            self.player.handleAccelTimer();
+
             // update the y and x internally of the player
-            self.player.yPos += playerYSpeed;
+            self.player.yPos += self.player.ySpeed + self.player.yAccel;
             self.player.xPos += self.player.xSpeed;
+
 
 
             self.refreshView();
 
             self.counter += 1;
 
-        }
+        }   /*end of updateUI*/
 
         this.startGame = function () {
             // creates a timer that calls updateUI every 50 ms
-            self.timer = setInterval(self.updateUI, 50)
+            self.timer = setInterval(self.updateUI, 30);
+            self.player = new player();
         }
 
         this.updatePlatforms = function () {
@@ -140,6 +157,7 @@ var gameUI = function () {
 
             // set the global platforms array = to the newArray that has removed the out of view platforms and added the new ones
             self.platforms = newArray;
+
         }
 
 
@@ -148,12 +166,13 @@ var gameUI = function () {
             if (curY <= -self.height) {
                 curY = self.height;
             }
-            curY -= 1;
+            curY += self.globalMoveSpeed;
             return curY;
         }
-    }
+    } /*end of initialize*/
     this.initialize();
-}
+
+} /*end of gameUI*/
 
 var platform = function (id, top) {
     var self = this;
@@ -167,18 +186,19 @@ var platform = function (id, top) {
     this.initialize = function (id, top) {
         self.id = id;
         self.speed = 10;
-        // give the platforms a random x pos
-        self.xPos = (Math.floor(Math.random() * 530));
         // determine where to pos the 'top' css element of the platform
         self.top = 700 - top;
         // set the starting yPos
         self.yPos = 700;
         self.width = 150;
         self.height = 25;
+        // give the platforms a random x pos
+        self.xPos = (Math.floor(Math.random() * (gameWidth - self.width)));
     };
     this.positionPlatform = function (x, y) {
         self.xPos = x;
         self.yPos = y;
+        self.ySpeed = 2;
     };
     this.setSpeed = function (speed) {
         self.speed = speed;
@@ -187,7 +207,7 @@ var platform = function (id, top) {
         self.yPos -= 1;
     }
     this.initialize(id, top);
-}
+} /*end of platform*/
 
 var player = function () {
     var self = this;
@@ -195,16 +215,45 @@ var player = function () {
     this.xPos = 0;
     this.yPos = 0;
     this.xSpeed = 0;
+    this.ySpeed = 3;
+    this.yAccel = 0;
+    this.accelTimer = undefined;
 
     this.initialize = function () {
-        self.xPos = 20;
-        self.yPos = 20;
+        self.xPos = 328;
+        self.yPos = 30;
+        self.createAccelTimer();
     };
 
     this.setPos = function (x, y) {
         self.xPos = x;
         self.yPos = y;
     };
+
+    this.createAccelTimer = function () {
+        self.accelTimer = setInterval(self.updateAccel, 500);
+    }
+
+    this.handleAccelTimer = function () {
+        if (self.ySpeed >= 2) {
+            if (self.accelTimer == undefined) {
+                self.createAccelTimer();
+            }
+        }
+        if (self.ySpeed == -1) {
+            if (self.accelTimer != undefined) {
+                clearInterval(self.accelTimer);
+                self.accelTimer = undefined;
+            }
+        }
+    }
+
+    this.updateAccel = function () {
+        if (self.yAccel <= 4) {
+            self.yAccel += 1;
+        }
+    }
+
 
     // if the player is currently not moving (isMoving): sets the xSpeed of the player as well as isMoving to true
     this.handleKeyDown = function (e) {
@@ -235,4 +284,4 @@ var player = function () {
     this.initialize();
 
 
-}
+} /*end of player*/

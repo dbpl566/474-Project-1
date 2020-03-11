@@ -4,9 +4,31 @@
     display: flex;
 }
 
+#startScreen{
+    width: 100vw; /*means 100% of view width */
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: transparent;
+    z-index: 99;
+}
+#endScreen{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: red;
+    z-index: 99;
+}
+
 #gameBoard{
-    width: 700px;    
-    height: 680px;
+    background-image: url("/assets/sky.png");
+    background-size: 100% 100%;
+    position: fixed;
+    width: 100vw;    
+    height: 100vh;
     border-style:solid;
     border-width:1px;
     border-color:black;
@@ -14,19 +36,21 @@
     padding:0;
 }
 #scoreBoard{
-    background: silver;
-    width: 680px;    
-    height: 80px;
+    background: url("/assets/score.png");
+    background-size:100% 100%;
+    top:10px;
+    width: 408px;    
+    height: 168px;
     margin:10px 10px;
-    position:relative;
-    border-style:solid;
+    position:fixed;
+    /* border-style:solid;
     border-width:1px;
-    border-color:black;
+    border-color:black; */
 }
 .board{
-    background: url('/images/background1.jpg');
+    background: url('/images/background2.png');
     background-repeat: repeat-y;
-    width:680px;
+    width: 680px;
     height:1884px;
     position: absolute;
     z-index: -99;
@@ -34,11 +58,10 @@
 #playBoardContainer{
     margin:10px 10px;
     width:680px;
-    height:550px;
-    position: relative;;
-    border-style:solid;
-    border-width:1px;
-    border-color:black;
+    height:95vh;
+    position: fixed;
+    top: 0;
+    left: 450px;
     overflow-y: hidden;
 }
 .platform{
@@ -55,31 +78,36 @@
     background-size:20px;
     height:25px;
     width: 25px;
-    top:10px;
-    left:10px;
+    top:30px;
+    left:328px;
 }
 .btnStyle {
-	border-radius: 4px;
-	border: thin solid rgb(32, 146, 240);
-	background-color: rgb(148, 158, 248);
+
+  background-image: url("/assets/button.png");
+  background-size: 100% 100%;
+	border-radius: 6px;
+	border: medium solid rgb(97, 67, 12);
+	background-color: rgb(255, 189, 128);
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
-	font-size:20px;
-	color: #663300;
-	padding: 5px 30px;
-	margin:8px 70px;
+	font-size:25px;
+
+	  color: rgb(168, 35, 35);
+    padding: 5px 30px;
+    height: 100px; 
+    width: 200px;
+    margin: -50px 0px 0px -100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .btnStyle:active {
-	border: thin solid rgb(0, 156, 204);
-	background-color: rgb(210, 226, 255);
-	color: #669900;
+	opacity: 70%;
 	cursor: pointer;
 }
 
 .btnStyle:hover {
-	border: thin solid rgb(0, 153, 255);
-	background-color: rgb(220, 214, 252);
-	color: #996633;
+	opacity: 70%;
 	cursor: pointer;
 }
