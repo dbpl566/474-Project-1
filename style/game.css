@@ -48,7 +48,7 @@
     border-color:black; */
 }
 .board{
-    background: url('/images/background1.jpg');
+    background: url('/images/background2.png');
     background-repeat: repeat-y;
     width:40vw;
     height:1884px;
@@ -67,14 +67,16 @@
     border-color:black;
     overflow-y: hidden;
 }
+
 .platform{
     position: absolute;
-    background:red;
-    background-size:20px;
-    height:25px;
-    width:150px;
+    background: url('/images/leaf.png');
+    /* background-size:20px; */
+    height:139px;
+    width:100px;
     z-index: 0;
 }
+
 #player{
     position: absolute;
     background:blue;
