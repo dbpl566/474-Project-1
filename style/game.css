@@ -1,3 +1,8 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
 #mainContent{
     justify-content: center;
     align-self: center;
@@ -10,7 +15,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    background: transparent;
+    background: black;
     z-index: 99;
 }
 #endScreen{
@@ -55,10 +60,14 @@
     position: absolute;
     z-index: -99;
 }
+#playBoard2{
+    top: 1884px; 
+    background: rgb(217, 255, 0);
+}
+
 #playBoardContainer{
-    margin:10px 10px;
     width:680px;
-    height:95vh;
+    height:100vh;
     position: fixed;
     top: 0;
     left: 450px;
@@ -66,7 +75,7 @@
 }
 .platform{
     position: absolute;
-    background:red;
+    background:rgb(10, 210, 75);
     background-size:20px;
     height:25px;
     width:150px;
@@ -83,8 +92,8 @@
 }
 .btnStyle {
 
-  background-image: url("/assets/button.png");
-  background-size: 100% 100%;
+    background-image: url("/assets/button.png");
+    background-size: 100% 100%;
 	border-radius: 6px;
 	border: medium solid rgb(97, 67, 12);
 	background-color: rgb(255, 189, 128);
@@ -92,7 +101,7 @@
 	font-weight: bold;
 	font-size:25px;
 
-	  color: rgb(168, 35, 35);
+	color: rgb(168, 35, 35);
     padding: 5px 30px;
     height: 100px; 
     width: 200px;

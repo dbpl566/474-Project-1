@@ -1,4 +1,4 @@
-var gameHeight = 1884;
+var gameHeight =  $('#playBoardContainer').css("height");
 var gameWidth = 680;
 
 var gameUI = function () {
@@ -21,12 +21,12 @@ var gameUI = function () {
     this.initialize = function () {
         self.top.name = '#playBoard1';
         $('#startScreen').show();
-        $('#endScreen').hide()
+        $('#endScreen').hide();
 
         $('#startBtn').on('click', function () {
             $('#startBtn').hide();
             $('#startScreen').slideUp();
-            setTimeout(self.startGame, 3000);
+            setTimeout(self.startGame, 0); //number delays when game starts
 
         });
 
@@ -187,9 +187,9 @@ var platform = function (id, top) {
         self.id = id;
         self.speed = 10;
         // determine where to pos the 'top' css element of the platform
-        self.top = 700 - top;
+        self.top = 800 - top; 
         // set the starting yPos
-        self.yPos = 700;
+        self.yPos = 800;
         self.width = 150;
         self.height = 25;
         // give the platforms a random x pos
