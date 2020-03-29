@@ -2,31 +2,39 @@
 <html>
 
 <head>
-    <title>Futball</title>
+    <title>Falling In The Deep</title>
     <link rel="stylesheet" href="style/game.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type='text/javascript' src="scripts/game.js"></script>
     <script type='text/javascript' src="scripts/gameUI.js"></script>
 </head>
 
 <body>
     <div id="mainContent">
+        <div id="startScreen">
+            <button id="startBtn" class="btnStyle">START GAME</button>
+        </div>
+        <div id="endScreen">
+            <button id="restartBtn" class="btnStyle">RESTART GAME</button>
+        </div>
+
         <div id="gameBoard">
-            <div id="scoreBoard">
-                <div id="GameStopped"><button id="StartBtn" class="btnStyle">Start Game</button>
+            <div id="scoreBoard"></div>
+            <div id="playBoardContainer">
+                <div id="player"></div>
+                <div id="playBoard1" class="board">
+
                 </div>
-                <div id="GameRunning"><button id="StopBtn" class="btnStyle">Stop Game</button>
+                <div id="playBoard2" class="board" style="top: 1884px; background: rgb(217, 255, 0);">
+
                 </div>
-            </div>
-            <div id="playBoard">
-                <div id="platform1"></div>
+
             </div>
         </div>
 
         <script type="text/javascript">
             $(function () {
-                var fb = new gameUI();
+                var game = new gameUI();
             });
         </script>
 </body>
