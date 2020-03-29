@@ -62,7 +62,7 @@ body{
 }
 #playBoard2{
     top: 1884px; 
-    background: rgb(217, 255, 0);
+    /*background: rgb(217, 255, 0);*/
 }
 
 #playBoardContainer{

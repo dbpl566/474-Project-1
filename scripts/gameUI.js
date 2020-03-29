@@ -1,4 +1,4 @@
-var gameHeight =  $('#playBoardContainer').css("height");
+var gameHeight =  1884;
 var gameWidth = 680;
 
 var gameUI = function () {
@@ -64,7 +64,7 @@ var gameUI = function () {
             top2 = this.setBackgroundPos(top2.top);
 
             // determines which background to add platforms onto
-            if (top1 > -1100 && top1 < 700) {
+            if (top1 > -1100 && top1 < 800) {
                 self.top.name = '#playBoard1';
                 self.top.pos = top1;
             }
