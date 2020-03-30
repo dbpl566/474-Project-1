@@ -76,13 +76,13 @@ body{
 .platform{
     position: absolute;
     background:rgb(10, 210, 75);
-    background-size:20px;
     height:25px;
     width:150px;
     z-index: 0;
 }
 #player{
     position: absolute;
+    background-color: red;
     height:32px;
     width: 32px;
     top:30px;

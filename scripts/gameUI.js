@@ -97,12 +97,15 @@ var gameUI = function () {
 
             // update the yPos (internally) of each platform
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
+            // player offset by 10 px cause body in image smaller than width
             self.player.ySpeed = 3;
             self.platforms.forEach(p => {
                 if ((self.player.yPos + self.player.height) - p.yPos <= 3 && (self.player.yPos + self.player.height) - p.yPos >= -3) {
                     let minX = p.xPos - self.player.width;
-                    let maxX = p.xPos + p.width;
-                    if (self.player.xPos >= minX && self.player.xPos <= maxX) {
+                    let maxX = p.xPos + p.width + self.player.width;
+                    let playerMinX = self.player.xPos - 10;
+                    let playerMaxX = self.player.xPos + self.player.width + 10;
+                    if (playerMinX >= minX && playerMaxX <= maxX) {
                         self.player.ySpeed = self.globalMoveSpeed;
                         self.player.yAccel = 0;
                         self.player.yPos = p.yPos - self.player.height;
@@ -153,8 +156,8 @@ var gameUI = function () {
             var $newPlatform = $("<div id='platform" + self.platformId + "' class='platform'></div>");
 
             //set the top and left of the newly created div
-            $($newPlatform).css("top", newPlat.top);
-            $($newPlatform).css("left", newPlat.xPos);
+            $($newPlatform).css("top", newPlat.top+'px');
+            $($newPlatform).css("left", newPlat.xPos+'px');
 
             $(self.top.name).append($newPlatform);
 
@@ -223,7 +226,7 @@ var player = function () {
     this.height = 0;
     this.width = 0;
     this.accelTimer = undefined;
-    this.state = 'idle';
+    this.state = 'idleright';
     this.prevstate;
 
     this.initialize = function () {
