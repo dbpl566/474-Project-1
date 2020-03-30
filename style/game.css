@@ -1,3 +1,8 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
 #mainContent{
     justify-content: center;
     align-self: center;
@@ -48,14 +53,24 @@
     border-color:black; */
 }
 .board{
-    background: url('/images/background1.jpg');
+    background: url('/images/background2.png');
     background-repeat: repeat-y;
+<<<<<<< HEAD
     width:40vw;
+=======
+    width: 680px;
+>>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
     height:1884px;
     position: absolute;
     z-index: -99;
 }
+#playBoard2{
+    top: 1884px; 
+    /*background: rgb(217, 255, 0);*/
+}
+
 #playBoardContainer{
+<<<<<<< HEAD
     margin:10px 10px;
     width:40vw;
     height:95vh;
@@ -66,17 +81,25 @@
     border-width:1px;
     border-color:black;
     overflow-y: hidden;
+=======
+    width:680px;
+    height:100vh;
+    position: fixed;
+    top: 0;
+    left: 450px;
+    /*overflow-y: hidden;*/
+>>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
 }
 .platform{
     position: absolute;
-    background:red;
-    background-size:20px;
+    background:rgb(10, 210, 75);
     height:25px;
     width:150px;
     z-index: 0;
 }
 #player{
     position: absolute;
+<<<<<<< HEAD
     background:blue;
     background-size:20px;
     height:25px;
@@ -85,6 +108,26 @@
     left:10px;
 }
 .btnStyle {
+=======
+    background-color: red;
+    height:32px;
+    width: 32px;
+    top:30px;
+    left:328px;
+    z-index: 99;
+}
+.playerImage{
+    position: absolute;
+    display: none;
+}
+#idleright{
+    display: block;
+}
+
+
+.btnStyle {
+
+>>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
     background-image: url("/assets/button.png");
     background-size: 100% 100%;
 	border-radius: 6px;
@@ -93,6 +136,10 @@
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
 	font-size:25px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
 	color: rgb(168, 35, 35);
     padding: 5px 30px;
     height: 100px; 
