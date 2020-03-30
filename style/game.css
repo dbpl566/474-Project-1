@@ -78,7 +78,7 @@ body{
     background:rgb(10, 210, 75);
     height:25px;
     width:150px;
-    z-index: 0;
+    z-index: 99;
 }
 #player{
     position: absolute;
@@ -87,7 +87,7 @@ body{
     width: 32px;
     top:30px;
     left:328px;
-    z-index: 99;
+    z-index: 100;
 }
 .playerImage{
     position: absolute;
