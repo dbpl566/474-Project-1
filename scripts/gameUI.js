@@ -18,11 +18,15 @@ var gameUI = function () {
     this.platformId = 0;
     this.player = undefined;
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.height = gameHeight;
 =======
     this.height = boardHeight;
     this.globalMoveSpeed = -1;
 >>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
+=======
+    this.height = gameHeight;
+>>>>>>> 67da19e320c4deaee5568afa9d869ecc1db4649f
     this.top = {
         pos: 0,
         name: '',
@@ -132,6 +136,9 @@ var gameUI = function () {
             // update the yPos (internally) of each platform
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 67da19e320c4deaee5568afa9d869ecc1db4649f
             this.player.ySpeed = 2;
             self.platforms.forEach(p => {
                 if ((self.player.yPos + 25) - p.yPos <= 1 && (self.player.yPos + 25) - p.yPos >= -1) {
@@ -262,6 +269,7 @@ var platform = function (id, top) {
         self.height = 25;
          // give the platforms a random x pos
          self.xPos = (Math.floor(Math.random() * (gameWidth - self.width)));
+<<<<<<< HEAD
 =======
         self.top = 800 - top; 
         // set the starting yPos
@@ -271,6 +279,8 @@ var platform = function (id, top) {
         // give the platforms a random x pos
         self.xPos = (Math.floor(Math.random() * (boardWidth - self.width)));
 >>>>>>> 46c52db619fb4b98080d8a587cbd58e013542002
+=======
+>>>>>>> 67da19e320c4deaee5568afa9d869ecc1db4649f
     };
     this.positionPlatform = function (x, y) {
         self.xPos = x;
@@ -297,6 +307,9 @@ var player = function () {
     this.yPos = 0;
     this.xSpeed = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 67da19e320c4deaee5568afa9d869ecc1db4649f
     this.ySpeed = 0;
 
     this.initialize = function () {
