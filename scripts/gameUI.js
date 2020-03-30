@@ -98,13 +98,13 @@ var gameUI = function () {
             // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
             self.player.ySpeed = 3;
             self.platforms.forEach(p => {
-                if ((self.player.yPos + 25) - p.yPos <= 3 && (self.player.yPos + 25) - p.yPos >= -3) {
-                    let minX = p.xPos - 24;
+                if ((self.player.yPos + self.player.height) - p.yPos <= 3 && (self.player.yPos + self.player.height) - p.yPos >= -3) {
+                    let minX = p.xPos - self.player.width;
                     let maxX = p.xPos + p.width;
                     if (self.player.xPos >= minX && self.player.xPos <= maxX) {
                         self.player.ySpeed = self.globalMoveSpeed;
                         self.player.yAccel = 0;
-                        self.player.yPos = p.yPos - 25;
+                        self.player.yPos = p.yPos - self.player.height;
                     }
                 }
                 p.updatePosition();
@@ -219,11 +219,15 @@ var player = function () {
     this.xSpeed = 0;
     this.ySpeed = 3;
     this.yAccel = 0;
+    this.height = 0;
+    this.width = 0;
     this.accelTimer = undefined;
 
     this.initialize = function () {
         self.xPos = 328;
-        self.yPos = 30;
+        self.yPos = 32;
+        self.height = 32;
+        self.width = 32;
         self.createAccelTimer();
     };
 
