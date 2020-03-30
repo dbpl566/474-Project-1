@@ -42,9 +42,16 @@ var gameUI = function () {
 
         $('#restartBtn').on('click', function () {
             //self.game.reset();
-            self.running = true;
+            $('#restartBtn').hide();
+            $('#endScreen').slideUp();
             clearInterval(self.timer);
             self.counter = 0;
+            self.platforms.forEach(platform => {
+                $('#platform' + platform.id).remove();
+            });
+            self.platforms = []; //must occur after for
+            self.running = true; 
+            setTimeout(self.startGame, 0);  
         });
 
         // listener for when a key is pressed down
@@ -76,7 +83,6 @@ var gameUI = function () {
                 self.top.pos = top2;
             }
 
-
             $('#playBoard1').css("top", top1);
             $('#playBoard2').css("top", top2);
 
@@ -89,6 +95,12 @@ var gameUI = function () {
 
         // called every tick (50ms) from setInterval
         this.updateUI = function () {
+
+            if ((self.player.yPos + self.player.height < 0) || (self.player.yPos > gameHeight)){
+                self.endGame();
+            }
+
+
             // counter gets incremented every tick from the setInterval (50ms right now)
             // after 100 ticks, add a new platform and remove any that are out of view
             if (self.counter % 100 == 0) {
@@ -112,16 +124,14 @@ var gameUI = function () {
                     }
                 }
                 p.updatePosition();
-            })
+            }); 
 
             self.player.handleAccelTimer();
 
             // update the y and x internally of the player
             self.player.yPos += self.player.ySpeed + self.player.yAccel;
             self.player.xPos += self.player.xSpeed;
-
-
-
+        
             self.refreshView();
 
             self.counter += 1;
