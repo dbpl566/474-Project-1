@@ -236,8 +236,7 @@ var player = function () {
     this.height = 0;
     this.width = 0;
     this.accelTimer = undefined;
-    this.state = 'idleright';
-    this.prevstate;
+    this.state;
 
     this.initialize = function () {
         self.xPos = 328;
@@ -245,6 +244,7 @@ var player = function () {
         self.height = 32;
         self.width = 32;
         self.createAccelTimer();
+        self.state = 'idleright'
     };
 
     this.setPos = function (x, y) {
@@ -278,10 +278,9 @@ var player = function () {
 
     //changes state to input string and handles hiding and showing player images
     this.changeState = function(newstate){
-        self.prevstate = self.state;
+        $('#'+newstate).css("display", "block");
+        $('#'+self.state).css("display", "none");
         self.state = newstate;
-        $('#'+self.state).css("display", "block");
-        $('#'+self.prevstate).css("display", "none");
     }
 
     // if the player is currently not moving (isMoving): sets the xSpeed of the player as well as isMoving to true
