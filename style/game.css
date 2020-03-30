@@ -83,13 +83,21 @@ body{
 }
 #player{
     position: absolute;
-    background:blue;
-    background-size:20px;
     height:32px;
     width: 32px;
     top:30px;
     left:328px;
+    z-index: 99;
 }
+.playerImage{
+    position: absolute;
+    display: none;
+}
+#idle{
+    display: block;
+}
+
+
 .btnStyle {
 
     background-image: url("/assets/button.png");

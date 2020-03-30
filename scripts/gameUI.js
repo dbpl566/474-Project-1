@@ -2,6 +2,7 @@ var gameHeight = $(window).height();
 var gameWidth = $(window).width();
 var boardHeight = 1884;
 var boardWidth = 680;
+/*const Direction = Object.freeze({LEFT, RIGHT});*/
 
 var gameUI = function () {
     var self = this;
@@ -222,6 +223,8 @@ var player = function () {
     this.height = 0;
     this.width = 0;
     this.accelTimer = undefined;
+    this.state = 'idle';
+    this.prevstate;
 
     this.initialize = function () {
         self.xPos = 328;
@@ -260,6 +263,13 @@ var player = function () {
         }
     }
 
+    //changes state to input string and handles hiding and showing player images
+    this.changeState = function(newstate){
+        self.prevstate = self.state;
+        self.state = newstate;
+        $('#'+self.state).css("display", "block");
+        $('#'+self.prevstate).css("display", "none");
+    }
 
     // if the player is currently not moving (isMoving): sets the xSpeed of the player as well as isMoving to true
     this.handleKeyDown = function (e) {
@@ -268,10 +278,12 @@ var player = function () {
         }
         // left
         if (e.which == 37) {
+            self.changeState('runleft');
             self.xSpeed = -5;
         }
         // right
         else if (e.which == 39) {
+            self.changeState('runright');
             self.xSpeed = 5;
         }
 
@@ -283,7 +295,7 @@ var player = function () {
         if (e.which == 37 || e.which == 39) {
             self.xSpeed = 0;
             self.isMoving = false;
-
+            self.changeState('idle');
         }
     }
 
