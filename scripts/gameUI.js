@@ -292,10 +292,14 @@ var player = function () {
 
     // when left/right arrow is released, sets the xSpeed back to 0 and isMoving to false;
     this.handleKeyUp = function (e) {
-        if (e.which == 37 || e.which == 39) {
+        if (e.which == 37){
             self.xSpeed = 0;
             self.isMoving = false;
-            self.changeState('idle');
+            self.changeState('idleleft');
+        }else if (e.which == 39) {
+            self.xSpeed = 0;
+            self.isMoving = false;
+            self.changeState('idleright');
         }
     }
 
