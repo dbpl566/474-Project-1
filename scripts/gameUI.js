@@ -1,5 +1,7 @@
-var gameHeight =  1884;
-var gameWidth = 680;
+var gameHeight = $(window).height();
+var gameWidth = $(window).width();
+var boardHeight = 1884;
+var boardWidth = 680;
 
 var gameUI = function () {
     var self = this;
@@ -9,7 +11,7 @@ var gameUI = function () {
     this.platforms = [];
     this.platformId = 0;
     this.player = undefined;
-    this.height = gameHeight;
+    this.height = boardHeight;
     this.globalMoveSpeed = -1;
     this.top = {
         pos: 0,
@@ -193,7 +195,7 @@ var platform = function (id, top) {
         self.width = 150;
         self.height = 25;
         // give the platforms a random x pos
-        self.xPos = (Math.floor(Math.random() * (gameWidth - self.width)));
+        self.xPos = (Math.floor(Math.random() * (boardWidth - self.width)));
     };
     this.positionPlatform = function (x, y) {
         self.xPos = x;

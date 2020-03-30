@@ -71,7 +71,7 @@ body{
     position: fixed;
     top: 0;
     left: 450px;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 .platform{
     position: absolute;
