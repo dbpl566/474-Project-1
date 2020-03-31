@@ -77,7 +77,7 @@ var gameUI = function () {
             top2 = this.setBackgroundPos(top2.top);
 
             // determines which background to add platforms onto
-            if (top1 > -1100 && top1 < 800) {
+            if (top1 > -1000 && top1 < 800) {  
                 self.top.name = '#playBoard1';
                 self.top.pos = top1;
             }
@@ -212,7 +212,7 @@ var platform = function (id, top) {
         // set the starting yPos
         self.yPos = 800;
         self.width = 150;
-        self.height = 25;
+        self.height = 157; 
         // give the platforms a random x pos
         self.xPos = (Math.floor(Math.random() * (boardWidth - self.width)));
     };
