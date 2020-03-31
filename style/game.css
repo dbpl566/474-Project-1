@@ -98,8 +98,8 @@ p{
 }
 .platform{
     position: absolute;
-    background:rgb(10, 210, 75);
-    height:25px;
+    background-image: url("/images/leaf.png");
+    height:157px;
     width:150px;
     z-index: 99;
 }
