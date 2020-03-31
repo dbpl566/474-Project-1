@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Falling In The Deep</title>
+    <title>Fee Fi Fo Fall</title>
     <link rel="stylesheet" href="style/game.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -15,11 +15,17 @@
             <button id="startBtn" class="btnStyle">START GAME</button>
         </div>
         <div id="endScreen">
+            <p id = "endText">SCORE</p>
             <button id="restartBtn" class="btnStyle">RESTART GAME</button>
         </div>
 
         <div id="gameBoard">
-            <div id="scoreBoard"></div>
+
+            <div id="scoreBoard">
+                <p id = "score">SCORE<br>0</p>
+                <p id = "instructions">Climb down the beanstalk to escape the giant. <br>Try not to fall too far! </p>
+            </div>
+            
             <div id="playBoardContainer">
 
                     <div id="player">

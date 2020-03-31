@@ -8,6 +8,7 @@ var gameUI = function () {
     var self = this;
     this.game = undefined;
     this.running = false;
+    this.score = 0;
     this.counter = 0;
     this.platforms = [];
     this.platformId = 0;
@@ -30,20 +31,21 @@ var gameUI = function () {
             $('#startBtn').hide();
             $('#startScreen').slideUp();
             setTimeout(self.startGame, 0); //number delays when game starts
-
+            self.running = true;
         });
 
         //call to show endscreen and restart
         this.endGame = function () {
             $('#restartBtn').show();
             $('#endScreen').show();
+            document.getElementById("endText").innerHTML = "SCORE<br>"+self.score;
             self.running = false;
         }
 
         $('#restartBtn').on('click', function () {
-            //self.game.reset();
             $('#restartBtn').hide();
             $('#endScreen').slideUp();
+            self.score = 0;
             clearInterval(self.timer);
             self.counter = 0;
             self.platforms.forEach(platform => {
@@ -66,6 +68,7 @@ var gameUI = function () {
 
         // gets called every tick
         this.refreshView = function () {
+            document.getElementById("score").innerHTML = "SCORE<br>"+self.score;
             var top1 = $('#playBoard1').position();
             var top2 = $('#playBoard2').position();
 
@@ -93,49 +96,51 @@ var gameUI = function () {
         } /*end of refreshView*/
 
 
-        // called every tick (50ms) from setInterval
+        // called every tick (50ms) from setInterval if game is running 
         this.updateUI = function () {
-
-            if ((self.player.yPos + self.player.height < 0) || (self.player.yPos > gameHeight)){
-                self.endGame();
-            }
-
-
-            // counter gets incremented every tick from the setInterval (50ms right now)
-            // after 100 ticks, add a new platform and remove any that are out of view
-            if (self.counter % 100 == 0) {
-                self.updatePlatforms();
-            }
-
-            // update the yPos (internally) of each platform
-            // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
-            // player offset by 10 px cause body in image smaller than width
-            self.player.ySpeed = 3;
-            self.platforms.forEach(p => {
-                if ((self.player.yPos + self.player.height) - p.yPos <= 3 && (self.player.yPos + self.player.height) - p.yPos >= -3) {
-                    let minX = p.xPos - self.player.width;
-                    let maxX = p.xPos + p.width + self.player.width;
-                    let playerMinX = self.player.xPos - 10;
-                    let playerMaxX = self.player.xPos + self.player.width + 10;
-                    if (playerMinX >= minX && playerMaxX <= maxX) {
-                        self.player.ySpeed = self.globalMoveSpeed;
-                        self.player.yAccel = 0;
-                        self.player.yPos = p.yPos - self.player.height;
-                    }
+            if(self.running == true){
+                if ((self.player.yPos + self.player.height < 0) || (self.player.yPos > gameHeight)){
+                    self.endGame();
                 }
-                p.updatePosition();
-            }); 
+                // counter gets incremented every tick from the setInterval (50ms right now)
+                // after 100 ticks, add a new platform and remove any that are out of view
+                if (self.counter % 100 == 0) {
+                    self.updatePlatforms();
+                }
+                //every 100 secs add 10 to score, remainder = 99 to start score from 0
+                if (self.counter % 100 == 99) {
+                    self.score += 10; 
+                }
+                // update the yPos (internally) of each platform
+                // if player is on a platform, its ySpeed gets set to -1 instead of default 2;
+                // player offset by 10 px cause body in image smaller than width
+                self.player.ySpeed = 3;
+                self.platforms.forEach(p => {
+                    if ((self.player.yPos + self.player.height) - p.yPos <= 3 && (self.player.yPos + self.player.height) - p.yPos >= -3) {
+                        let minX = p.xPos - self.player.width;
+                        let maxX = p.xPos + p.width + self.player.width;
+                        let playerMinX = self.player.xPos - 10;
+                        let playerMaxX = self.player.xPos + self.player.width + 10;
+                        if (playerMinX >= minX && playerMaxX <= maxX) {
+                            self.player.ySpeed = self.globalMoveSpeed;
+                            self.player.yAccel = 0;
+                            self.player.yPos = p.yPos - self.player.height;
+                        }
+                    }
+                    p.updatePosition();
+                }); 
 
-            self.player.handleAccelTimer();
+                self.player.handleAccelTimer();
 
-            // update the y and x internally of the player
-            self.player.yPos += self.player.ySpeed + self.player.yAccel;
-            self.player.xPos += self.player.xSpeed;
-        
-            self.refreshView();
+                // update the y and x internally of the player
+                self.player.yPos += self.player.ySpeed + self.player.yAccel;
+                self.player.xPos += self.player.xSpeed;
+            
+                self.refreshView();
 
-            self.counter += 1;
+                self.counter += 1;
 
+            }
         }   /*end of updateUI*/
 
         this.startGame = function () {
