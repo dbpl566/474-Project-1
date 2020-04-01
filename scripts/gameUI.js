@@ -120,8 +120,8 @@ var gameUI = function () {
                     self.endGame();
                 }
                 // counter gets incremented every tick from the setInterval (50ms right now)
-                // after 100 ticks, add a new platform and remove any that are out of view
-                if (self.counter % 80 == 0 && self.counter >= 80) {
+                // after 90 ticks, add a new platform and remove any that are out of view
+                if (self.counter % 90 == 0 && self.counter >= 90) {
                     self.updatePlatforms();
                 }
                 //every 100 secs add 10 to score, remainder = 99 to start score from 0

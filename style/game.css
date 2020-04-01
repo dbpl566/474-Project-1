@@ -91,6 +91,7 @@ p{
     height:1884px;
     position: absolute;
     z-index: -99;
+    overflow: visible;
 }
 #playBoard2{
     top: 1884px; 
