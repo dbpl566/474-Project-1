@@ -1,9 +1,9 @@
 CISC474 Spr-2020
 
-Game Name: Falling in the deep
+Game Name: Fee Fi Fo Fall
 Team Name: DAZZZLE
 
-Overview:  Falling in the deep
+Overview:  Fee Fi Fo Fall
     This game is a vertical endless falling game. Players can use keys to move left or right. Randomly generated bricks or obstacles will appear at the bottom along. Try to avoid the obstacle and get land on the safe brick and survive as long as you can. Score will be calculated according to both time and bricks you landed. Dungeon themed, similar to ns-shaft game.
     
 https://apps.apple.com/us/app/ns-shaft/id623721740
@@ -14,26 +14,25 @@ We intend on having a general js function that will be called on a game start bu
 
 General Roles:
 
-Zhongyuan(Woody) Hu
+Zhongyuan (Woody) Hu
 HTML CSS
 Test and Documentation
 Design UI 
 
-
 Debra Lymon
-HTML
-Maybe help with graphics
+CSS styling
+Game assets and creating graphics
 
 Zihan (Anna) Wu
-HTML,  CSS styling
-Design and graphics
+CSS styling
+Game theme
+Player and endgame logic
 
 Zhuohao Liu (Leo) 
 Buying treats and drinks and food
 Help with graphics and coding
 
-
 Alex Talham
 Javascript game logic
-html
+HTML
 
