@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Falling In The Deep</title>
+    <title>Fee Fi Fo Fall</title>
     <link rel="stylesheet" href="style/game.css" type="text/css">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -12,20 +12,34 @@
 <body>
     <div id="mainContent">
         <div id="startScreen">
+            <p id="startText">Fee Fi Fo Fall</p>
             <button id="startBtn" class="btnStyle">START GAME</button>
         </div>
         <div id="endScreen">
+            <p id="endText">SCORE:</p>
             <button id="restartBtn" class="btnStyle">RESTART GAME</button>
         </div>
 
         <div id="gameBoard">
-            <div id="scoreBoard"></div>
+
+            <div id="scoreBoard">
+                <p id="score">SCORE<br>0</p>
+                <p id="instructions">Climb down the beanstalk to escape the giant. <br>Try not to fall too far! </p>
+            </div>
+
             <div id="playBoardContainer">
-                <div id="player"></div>
+
+                <div id="player">
+                    <img id="idleleft" class="playerImage" src='/assets/idleleft.gif'>
+                    <img id="idleright" class="playerImage" src='/assets/idleright.gif'>
+                    <img id="runleft" class="playerImage" src='/assets/runleft.gif'>
+                    <img id="runright" class="playerImage" src='/assets/runright.gif'>
+                </div>
+
                 <div id="playBoard1" class="board">
 
                 </div>
-                <div id="playBoard2" class="board" style="top: 1884px; background: rgb(217, 255, 0);">
+                <div id="playBoard2" class="board">
 
                 </div>
 
