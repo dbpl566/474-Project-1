@@ -119,7 +119,7 @@ var gameUI = function () {
                 }
                 // counter gets incremented every tick from the setInterval (50ms right now)
                 // after 100 ticks, add a new platform and remove any that are out of view
-                if (self.counter % 100 == 0 && self.counter >= 200) {
+                if (self.counter % 80 == 0 && self.counter >= 80) {
                     self.updatePlatforms();
                 }
                 //every 100 secs add 10 to score, remainder = 99 to start score from 0
@@ -131,7 +131,7 @@ var gameUI = function () {
                 // player offset by 10 px cause body in image smaller than width
                 self.player.ySpeed = 3;
                 self.platforms.forEach(p => {
-                    if ((self.player.yPos + self.player.height) - p.yPos <= 3 && (self.player.yPos + self.player.height) - p.yPos >= -3) {
+                    if ((self.player.yPos + self.player.height) - p.yPos <= 4 && (self.player.yPos + self.player.height) - p.yPos >= -4) {
                         let minX = p.xPos - self.player.width;
                         let maxX = p.xPos + p.width + self.player.width;
                         let playerMinX = self.player.xPos - 10;
@@ -224,7 +224,7 @@ var gameUI = function () {
 
             //check to see if current platforms are still in view, if not then remove
             self.platforms.forEach(platform => {
-                if (platform.yPos > -100) {
+                if (platform.yPos > -200) {
                     newArray.push(platform);
                 }
                 else {
@@ -315,7 +315,7 @@ var platform = function (id, top, type) {
     this.height = 0;
     this.top = 0;
     this.type = undefined;
-    this.opacity = 100;
+    this.opacity = 75;
     this.decayTimer = undefined;
     this.isDecay = false;
     this.initialize = function (id, top, type) {
