@@ -41,6 +41,7 @@ var gameUI = function () {
 
         //call to show endscreen and restart
         this.endGame = function () {
+            self.player.changeState("hit");
             $('#restartBtn').show();
             $('#endScreen').show();
             $('#scoreBoard').hide();
@@ -49,6 +50,7 @@ var gameUI = function () {
         }
 
         $('#restartBtn').on('click', function () {
+            self.player.changeState("idleright");
             $('#restartBtn').hide();
             $('#endScreen').hide();
             $('#scoreBoard').show();
@@ -74,12 +76,16 @@ var gameUI = function () {
 
         // listener for when a key is pressed down
         $('body').keydown(function (e) {
-            self.player.handleKeyDown(e);
+            if(self.running == true){
+                self.player.handleKeyDown(e);
+            }
         });
 
         // listener for when key is released
         $('body').keyup(function (e) {
-            self.player.handleKeyUp(e);
+            if(self.running == true){
+                self.player.handleKeyUp(e);
+            }
         });
 
         // gets called every tick
