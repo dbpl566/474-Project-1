@@ -66,6 +66,8 @@ var gameUI = function () {
             self.running = true;
             $('#playBoard1').css("top", 0);
             $('#playBoard2').css("top", 1884);
+            self.top.name = '#playBoard1';
+            self.top.pos = 0;
             self.startPlatforms();
             setTimeout(self.startGame, 0);
         });
