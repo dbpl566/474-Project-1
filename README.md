@@ -20,24 +20,24 @@ We intend on having a general js function that will be called on a game start bu
 General Roles:
 
 Zhongyuan (Woody) Hu
-HTML CSS
-Test and Documentation
-Design UI 
+- HTML CSS
+- Test and Documentation
+- Design UI 
 
 Debra Lymon
-CSS styling
-Game assets and creating graphics
+- CSS styling
+- Game assets and creating graphics
 
 Zihan (Anna) Wu
-CSS styling
-Game theme
-Player and endgame logic
+- CSS styling
+- Game theme
+- Player and endgame logic
 
 Zhuohao Liu (Leo) 
-Buying treats and drinks and food
-Help with graphics and coding
+- Buying treats and drinks and food
+- Help with graphics and coding
 
 Alex Talham
-Javascript game logic
-HTML
+- Javascript game logic
+- HTML
 
